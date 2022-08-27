@@ -24,13 +24,14 @@ if (!isset($_SESSION['username'])) {
     <head>
         <title>PHP PostgreSQL Registration & Login Example </title>
         <meta name="keywords" content="PHP,PostgreSQL,Insert,Login">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
     </head>
 
     <body>
         <div class="container">
+            <a href="./login.php" class="card-link">Login</a>
             <h2>Register Here </h2>
             <form method="post">
 
@@ -44,7 +45,7 @@ if (!isset($_SESSION['username'])) {
                     <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
                 </div>
 
-                <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+                <input type="submit" name="submit" class="btn btn-primary mt-3" value="Submit">
             </form>
         </div>
     </body>

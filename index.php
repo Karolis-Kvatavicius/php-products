@@ -23,9 +23,9 @@ if (isset($_SESSION['username'])) {
     <head>
         <title>PHP PostgreSQL Registration & Login Example </title>
         <meta name="keywords" content="PHP,PostgreSQL,Insert,Login">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
     </head>
 
     <body>
@@ -44,7 +44,7 @@ if (isset($_SESSION['username'])) {
             <?php
             while ($row = pg_fetch_assoc($ret)) {
             ?>
-                <div class="card" style="width: 18rem;">
+                <div class="card my-3" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title"><?= $row['name'] ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?= $row['price'] . " $" ?></h6>
