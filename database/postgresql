@@ -1,0 +1,278 @@
+--
+-- PostgreSQL database cluster dump
+--
+
+-- Started on 2022-08-27 04:22:29
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'BIG5';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:Hxt23HRQuvNZ09Sx+ptNdg==$YhzupbFnxgX2TUBqHoUwKN5PEtVfrYfmiwZfqih1DDA=:/gQ7sMpSJpCpV9GQ1BmaAm3xBVA4ZxAp738sPi471lM=';
+
+
+
+
+
+
+--
+-- Databases
+--
+
+--
+-- Database "template1" dump
+--
+
+\connect template1
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5
+-- Dumped by pg_dump version 14.5
+
+-- Started on 2022-08-27 04:22:29
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'BIG5';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+-- Completed on 2022-08-27 04:22:29
+
+--
+-- PostgreSQL database dump complete
+--
+
+--
+-- Database "postgres" dump
+--
+
+\connect postgres
+
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5
+-- Dumped by pg_dump version 14.5
+
+-- Started on 2022-08-27 04:22:29
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'BIG5';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 4 (class 2615 OID 16394)
+-- Name: products; Type: SCHEMA; Schema: -; Owner: postgres
+--
+
+CREATE SCHEMA products;
+
+
+ALTER SCHEMA products OWNER TO postgres;
+
+--
+-- TOC entry 2 (class 3079 OID 16384)
+-- Name: adminpack; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 3328 (class 0 OID 0)
+-- Dependencies: 2
+-- Name: EXTENSION adminpack; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
+
+
+--
+-- TOC entry 210 (class 1259 OID 16411)
+-- Name: products_seq; Type: SEQUENCE; Schema: products; Owner: postgres
+--
+
+CREATE SEQUENCE products.products_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE products.products_seq OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 211 (class 1259 OID 16418)
+-- Name: products; Type: TABLE; Schema: products; Owner: postgres
+--
+
+CREATE TABLE products.products (
+    id integer DEFAULT nextval('products.products_seq'::regclass) NOT NULL,
+    name character varying(50) NOT NULL,
+    description character varying(255) NOT NULL,
+    price double precision NOT NULL
+);
+
+
+ALTER TABLE products.products OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 16484)
+-- Name: users; Type: TABLE; Schema: products; Owner: postgres
+--
+
+CREATE TABLE products.users (
+    id integer NOT NULL,
+    username character varying(50) NOT NULL,
+    password character varying(255) NOT NULL,
+    created_at timestamp(0) without time zone DEFAULT CURRENT_TIMESTAMP,
+    role integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE products.users OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 16483)
+-- Name: users_id_seq; Type: SEQUENCE; Schema: products; Owner: postgres
+--
+
+CREATE SEQUENCE products.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE products.users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3329 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: products; Owner: postgres
+--
+
+ALTER SEQUENCE products.users_id_seq OWNED BY products.users.id;
+
+
+--
+-- TOC entry 3171 (class 2604 OID 16487)
+-- Name: users id; Type: DEFAULT; Schema: products; Owner: postgres
+--
+
+ALTER TABLE ONLY products.users ALTER COLUMN id SET DEFAULT nextval('products.users_id_seq'::regclass);
+
+
+--
+-- TOC entry 3320 (class 0 OID 16418)
+-- Dependencies: 211
+-- Data for Name: products; Type: TABLE DATA; Schema: products; Owner: postgres
+--
+
+COPY products.products (id, name, description, price) FROM stdin;
+2	bread	fresh, localy made bread	2.45
+3	tea	loose green tea, 200g	3.05
+4	milk	skim milk, 1 litre	1.12
+5	Bike	my rustic bike	111
+\.
+
+
+--
+-- TOC entry 3322 (class 0 OID 16484)
+-- Dependencies: 213
+-- Data for Name: users; Type: TABLE DATA; Schema: products; Owner: postgres
+--
+
+COPY products.users (id, username, password, created_at, role) FROM stdin;
+1	Karolis	5f4dcc3b5aa765d61d8327deb882cf99	2022-08-26 02:35:51	0
+2	admin	21232f297a57a5a743894a0e4a801fc3	2022-08-26 12:59:29	1
+\.
+
+
+--
+-- TOC entry 3330 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: products_seq; Type: SEQUENCE SET; Schema: products; Owner: postgres
+--
+
+SELECT pg_catalog.setval('products.products_seq', 7, true);
+
+
+--
+-- TOC entry 3331 (class 0 OID 0)
+-- Dependencies: 212
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: products; Owner: postgres
+--
+
+SELECT pg_catalog.setval('products.users_id_seq', 2, true);
+
+
+--
+-- TOC entry 3175 (class 2606 OID 16425)
+-- Name: products products_name_key; Type: CONSTRAINT; Schema: products; Owner: postgres
+--
+
+ALTER TABLE ONLY products.products
+    ADD CONSTRAINT products_name_key UNIQUE (name);
+
+
+--
+-- TOC entry 3177 (class 2606 OID 16423)
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: products; Owner: postgres
+--
+
+ALTER TABLE ONLY products.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3179 (class 2606 OID 16490)
+-- Name: users users_username_key; Type: CONSTRAINT; Schema: products; Owner: postgres
+--
+
+ALTER TABLE ONLY products.users
+    ADD CONSTRAINT users_username_key UNIQUE (username);
+
+
+-- Completed on 2022-08-27 04:22:30
+
+--
+-- PostgreSQL database dump complete
+--
+
+-- Completed on 2022-08-27 04:22:30
+
+--
+-- PostgreSQL database cluster dump complete
+--
+
