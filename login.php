@@ -42,13 +42,13 @@ if (!isset($_SESSION['username'])) {
 
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+                    <input type="text" class="form-control mb-3" id="username" placeholder="Enter Username" name="username">
                 </div>
 
 
                 <div class="form-group">
                     <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                    <input type="password" class="form-control " id="pwd" placeholder="Enter password" name="pwd">
                 </div>
 
                 <input type="submit" name="submit" class="btn btn-primary mt-3" value="Submit">

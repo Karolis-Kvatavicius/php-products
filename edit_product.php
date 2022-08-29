@@ -45,12 +45,12 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 1 && isset($_GET['name'
 
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" value="<?= $_GET['name'] ?>" required>
+                    <input type="text" class="form-control mb-3" id="name" placeholder="Enter name" name="name" value="<?= $_GET['name'] ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Description:</label>
-                    <input type="text" class="form-control" id="description" placeholder="Enter description" name="description" value="<?= $_GET['description'] ?>" required>
+                    <input type="text" class="form-control mb-3" id="description" placeholder="Enter description" name="description" value="<?= $_GET['description'] ?>" required>
                 </div>
 
                 <div class="form-group">

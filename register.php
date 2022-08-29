@@ -37,7 +37,7 @@ if (!isset($_SESSION['username'])) {
 
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" class="form-control" id="username" placeholder="Enter Username" name="username" required>
+                    <input type="text" class="form-control mb-3" id="username" placeholder="Enter Username" name="username" required>
                 </div>
 
                 <div class="form-group">
