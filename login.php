@@ -35,7 +35,9 @@ if (!isset($_SESSION['username'])) {
 
     <body>
         <div class="container">
-            <a href="./register.php" class="card-link">Don't have an account? Register here.</a>
+            <div class="mt-3">
+                <a href="./register.php" class="card-link">Don't have an account? Register here.</a>
+            </div>
             <h2 class="my-3">Login Here </h2>
             <form method="post">
 
