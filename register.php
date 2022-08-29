@@ -31,8 +31,8 @@ if (!isset($_SESSION['username'])) {
 
     <body>
         <div class="container">
-            <a href="./login.php" class="card-link">Login</a>
-            <h2>Register Here </h2>
+            <a href="./login.php" class="card-link">Have an account? Login here.</a>
+            <h2 class="my-3">Register Here </h2>
             <form method="post">
 
                 <div class="form-group">

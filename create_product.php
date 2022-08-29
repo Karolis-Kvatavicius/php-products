@@ -36,7 +36,7 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 1) {
         <!-- CREATE NEW PRODUCT -->
         <div class="container">
             <a href="./index.php" class="card-link">To Products</a>
-            <h2>Create product </h2>
+            <h2 class="my-3">Create product </h2>
             <form method="post">
 
                 <div class="form-group">

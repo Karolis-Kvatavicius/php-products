@@ -40,7 +40,7 @@ if (isset($_SESSION['username']) && $_SESSION['role'] == 1 && isset($_GET['name'
         <!-- EDIT PRODUCT -->
         <div class="container">
             <a href="./index.php" class="card-link">To Products</a>
-            <h2>Edit product </h2>
+            <h2 class="my-3">Edit product </h2>
             <form method="post">
 
                 <div class="form-group">
