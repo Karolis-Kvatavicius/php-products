@@ -1,8 +1,9 @@
 <?php
+ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
 session_start();
 if (!isset($_SESSION['username'])) {
     require_once 'config.php';
-
+    // phpinfo();
     $connection_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password} ";
     $dbconn = pg_connect($connection_string);
     if (isset($_POST['submit']) && !empty($_POST['submit'])) {
