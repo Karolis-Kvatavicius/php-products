@@ -1,9 +1,7 @@
 <?php
-ini_set('display_errors', 1); ini_set('display_startup_errors', 1); error_reporting(E_ALL);
-
 session_start();
 if (isset($_SESSION['username'])) {
-
+    print_r($_SESSION);
     require_once 'config.php';
 
     $connection_string = "host={$host} port={$port} dbname={$dbname} user={$user} password={$password} ";
@@ -49,23 +47,9 @@ if (isset($_SESSION['username'])) {
             <div class="row row-cols-4">
                 <?php
                 while ($row = pg_fetch_assoc($ret)) {
-                ?>
-                    <div class="card my-3 mx-3 col">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $row['name'] ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted"><?= $row['price'] . " $" ?></h6>
-                            <p class="card-text"><?= $row['description'] ?></p>
-                            <?php
-                            if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
-                            ?>
-                                <a href="./edit_product.php?name=<?= $row['name'] ?>&price=<?= $row['price'] ?>&description=<?= $row['description'] ?>" class="card-link">Edit</a>
-                                <a href="./delete_product.php?name=<?= $row['name'] ?>&delete=1" class="card-link">Delete</a>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </div>
-                <?php
+                    
+                    include 'product.php';
+                
                 }
                 ?>
             </div>
